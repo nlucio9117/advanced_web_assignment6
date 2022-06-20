@@ -1,0 +1,178 @@
+/**********************************************************
+* Description: Assignment 6 External style sheet 
+* Author: Natasha Lucio
+* Course: CSCI 4000-01
+* Date: 4-26-2021
+************************************************************/
+
+/*sets display to block setting*/
+article, aside, figure, footer, header, nav, section 
+{
+    display: block;
+}
+
+/*sets the entire page to white*/
+html 
+{
+    background-color: #ffffff;/*background color is white*/
+}
+
+/*styles the body*/
+body 
+{
+    margin-top: 0;
+    font-family: Helvetica, sans-serif;
+	width: 760px;
+    margin: 0 auto;
+    background-color: #e6ecff;/*body background color is light blue*/
+    border: 1px solid black;
+}
+
+/*styles for heading */
+h1 
+{
+    font-size: 125%;
+    margin: 0;
+    padding: .5em 0 .25em;
+}
+
+/*styles for heading 2*/
+h2 
+{
+    font-size: 115%;
+    margin: 0;
+    padding: .25em 0 .5em;
+}
+
+/*sets headings 1, 2, 3, and paragraphs to black color*/
+h1, h2, h3, p 
+{
+	color: black;
+}
+
+/*set labels in the form*/
+label 
+{
+    width: 10em;
+    padding-right: 1em;
+    float: left;
+	font-family: Helvetica, sans-serif;
+}
+
+/*set data input*/
+#data input 
+{
+    float: left;
+    width: 15em;
+    margin-bottom: .5em;
+}
+
+
+/*specific styles for links*/
+a 
+{
+	font-weight: bold;
+	color: #0030cc;/*link is a shade of blue*/
+}
+a:link, a:visited { 
+    color: #0030cc; /*link is a shade of blue*/
+}
+a:hover, a:focus { 
+    color: #00ccff; /*hover link is aqua*/
+}
+
+/*styles table*/
+table 
+{
+    border: double;
+	border-collapse: collapse;
+}
+
+/*styles table data and table header*/
+td, th 
+{
+    border: 1px solid black;
+    padding: .2em .5em .2em .5em;
+    vertical-align: top;
+    text-align: center;
+}
+
+/*styles form*/
+form 
+{
+    margin: 0;
+}
+
+/*set button input*/
+#buttons input 
+{
+    float: left;
+    margin-bottom: .5em;
+}
+
+/*sets line break to clear left*/
+br 
+{
+    clear: left;
+}
+
+/*style used for error messages*/
+.error {
+    color: red;
+    font-weight: bold;
+	text-align: left;
+}
+
+/*styles header*/
+header 
+{
+    margin: 0;
+    border-bottom: 1px solid black;
+    padding: .5em 2em;
+}
+
+/*styles for header 1*/
+header h1 
+{
+    margin: 0;
+    padding: .5em 0;
+    color: black;
+}
+
+/*styles main*/
+main 
+{
+    margin: 0;
+    padding: .5em 2em;
+}
+
+/*styles section*/
+section 
+{
+    float: left;
+    width: 500px;
+    padding-bottom: 1.5em;
+}
+
+/*styles the footer*/
+footer 
+{
+    clear: both;
+    margin-top: 1em;
+    padding-right: 1em;
+    border-top: 1px solid black;
+}
+
+/*styles the footer paragraph(s)*/
+footer p 
+{
+    text-align: right;
+    font-size: 80%;
+    margin: 1em 0;
+}
+/*used to set copyright to the right*/
+.right 
+{
+    text-align: right;
+}
+

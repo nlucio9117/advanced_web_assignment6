@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Author: Natasha Lucio -->
+<!-- Course: CSCI 4000-01 -->
+<!-- Program Date: 4-26-2021 -->
+<!-- Description: Question 3 Assignment 6 -->
+<html lang="en"><!-- specifies language used by this document -->
+<head>
+	<title>natasha lucio&#39;s kung fu school</title>
+	<meta charset="utf-8"><!-- character coding -->
+	<link href="main.css" rel="stylesheet" type="text/css"><!-- link to external style sheet -->
+	
+	<script>
+		function queryFunction(){//javascript function 
+			//alert("hello"); //outputs "hello" when you type in the input box
+			
+			//var ajaxDisplay = document.getElementById('ajaxDiv');
+			//ajaxDisplay.innerHTML = "TEST";
+			
+			var ajaxRequest;
+			
+			try {
+				ajaxRequest = new XMLHttpRequest();//XML Http object
+			} catch (e) {
+				//IE browsers
+				try {
+					ajaxRequest = new ActiveXObject("Msxm12.XMLHTTP");
+				} catch (e) {
+					//older version of IE
+					try {
+						ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch (e) {
+						//something went wrong
+						alert("Your browser broke!");
+						return false;
+					} //end try
+				} //end try
+			} // end try
+			
+			
+			ajaxRequest.onreadystatechange = function (){
+				if (ajaxRequest.readyState == 4) {
+					var ajaxDisplay = document.getElementById('ajaxDiv'); //gets Div ID
+					ajaxDisplay.innerHTML = ajaxRequest.responseText; // the inner HTML changes based on the ajax request
+				}													
+			}
+			
+			var studentGPA = document.getElementById('studentGPA').value;
+			//alert(studentGPA);
+			var queryString = "?studentGPA=" + studentGPA;
+			ajaxRequest.open("GET", "natashalucio_search.php" + queryString, true);
+			ajaxRequest.send(null);
+			//calls "natashalucio_search.php" file from the databse and displays attached queryString variable
+			}
+	
+	</script>
+</head>
+ 
+<body>
+<header>
+		<h1>Natasha Lucio Kung Fu School - Search Student</h1>
+</header>
+
+<main>
+		<h1>Search for students with the minimum GPA</h1>	
+		<br><!--line break-->
+
+<form name="myForm">
+	Minimum GPA: <input type="text" id="studentGPA"> <!--creates text box to accept student gpa-->
+	<br><br>
+	<input type="button" onclick="queryFunction()" value="Search"><!--creates button to submit student gpa from text box-->
+</form>
+<br>
+<div id="ajaxDiv">Students with GPAs higher than the minimum GPA will be displayed here.</div>
+<br><!--line break-->
+
+<!--creates a link that will allow user to search a student by student ID-->
+<p><a href="natasha_lucio_ajaxsearch_single.htm">Search &#38; Split </a></p>
+
+</main>
+
+<footer><!--displays copyright with current year-->
+		<p class="right">&copy; 2021
+		natasha lucio kung fu school</p>
+</footer>
+	
+
+</body>
+</html>

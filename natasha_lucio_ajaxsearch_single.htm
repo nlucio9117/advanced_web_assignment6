@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- Author: Natasha Lucio -->
+<!-- Course: CSCI 4000-01 -->
+<!-- Program Date: 4-26-2021 -->
+<!-- Description: Question 4 Assignment 6 -->
+<html lang="en"><!-- specifies language used by this document -->
+<head>
+	<title>natasha lucio&#39;s kung fu school</title>
+	<meta charset="utf-8"><!-- character coding -->
+	<link href="main.css" rel="stylesheet" type="text/css"><!-- link to external style sheet -->
+	
+	<script>
+		function queryStudent(){//javascript function 
+			
+			var ajaxRequest;
+			
+			try {
+				ajaxRequest = new XMLHttpRequest();//XML Http object
+			} catch (e) {
+				//IE browsers
+				try {
+					ajaxRequest = new ActiveXObject("Msxm12.XMLHTTP");
+				} catch (e) {
+					//older version of IE
+					try {
+						ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch (e) {
+						//something went wrong
+						alert("Your browser is incompatible");
+						return false;
+					} //end try
+				} //end try
+			} // end try
+			
+			
+			ajaxRequest.onreadystatechange = function (){
+				if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
+				
+					var ajaxDisplay = document.getElementById('ajaxDiv'); //gets Div ID
+					var response = ajaxRequest.responseText.split();
+					document.getElementById('ID').value = response[0].ID;
+					document.getElementById('studentName').value = response[1].studentName;
+					document.getElementById('studentEmail').value = response[2].studentEmail;
+					document.getElementById('studentGPA').value = reponse[3].studentGPA;
+					ajaxDisplay.innerHTML = ajaxRequest.responseText; // the inner HTML changes based on the ajax request
+				}													
+			}
+			
+			var studentID = document.getElementById('studentID').value;
+			//alert(studentID);
+			
+			var queryString = "?studentID=" + studentID;
+			ajaxRequest.open("GET", "natashalucio_search_single.php" + queryString, true);
+			ajaxRequest.send(null);
+			//sends request to "natashalucio_search_single.php" and displays attached queryString variable
+			}
+	
+	</script>
+</head>
+ 
+<body>
+<header>
+		<h1>Natasha Lucio Kung Fu School - Search &#38; Split</h1>
+</header>
+
+<main>
+		<h1>Search for students by studentID</h1>	
+		<br><!--line break-->
+
+<form name="myForm">
+	<label>StudentID:</label> 
+	<input type="text" id="studentID"><!--creates text box to accept student id-->
+	<br><br><!--line break-->
+	
+	<div id="buttons"> <!--creates id called "buttons" for css formatting-->
+	<label>&nbsp;</label> <!--label for alignment-->
+	<input type="button" onclick="queryStudent()" value="Search"><!--creates button to submit student id from text box-->
+	</div>
+</form>
+<br><!--line break-->
+
+<h2>Student information will be displayed in the textboxes below:</h2>
+<br><!--line break-->
+
+<form name="myForm">
+	<div id="data"> <!--creates id called "data" for css formatting-->
+		<label>Student ID:</label>
+		<input type="text" id="ID" value="" readonly> <!--creates read only text box for student id -->
+		<br><!--line break-->
+		<label>Student Name:</label> 
+		<input type="text" id="studentName" readonly> <!--creates read only text box for student name-->
+		<br><!--line break-->
+		<label>Email:</label>
+		<input type="text" id="studentEmail" readonly> <!--creates read only text box for student email-->
+		<br><!--line break-->
+		<label>GPA:</label>
+		<input type="text" id="studentGPA" readonly> <!--creates read only text box for student gpa-->
+		<br><br><!--line break-->
+	</div>
+</form>
+<br><!--line break-->
+
+
+<!--creates a link that sends user back to "index.php" file-->
+<p><a href="index.htm">Back to first page</a></p>
+
+</main>
+
+<footer><!--displays copyright with current year-->
+		<p class="right">&copy; 2021
+		natasha lucio kung fu school</p>
+</footer>
+	
+
+</body>
+</html>
